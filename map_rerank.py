@@ -17,8 +17,8 @@ def maprerank_response(API,URL,retriever,user_question,character):
 
     parser = JsonOutputParser(pydantic_object=RerankOutput)
 
-    llm = ChatOpenAI(
-        model="gpt-4o",
+    llm = ChatOpenAI(temperature=0.7,
+        model="deepseek-v3",
         openai_api_key=API,
         base_url=URL
     )

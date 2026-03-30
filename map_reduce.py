@@ -8,8 +8,8 @@ from langchain_core.prompts import MessagesPlaceholder
 def mapreduce_response(API,URL,retriever,user_question,character):
 
     retriever = retriever
-    llm = ChatOpenAI(
-        model="gpt-4o",
+    llm = ChatOpenAI(temperature=0.7,
+        model="deepseek-v3",
         openai_api_key=API,
         base_url=URL
     )

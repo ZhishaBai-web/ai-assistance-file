@@ -10,7 +10,7 @@ def clear_retriever():
         del st.session_state["retriever"]
     if "submit" in st.session_state:
         st.session_state["submit"] = False
-    if st.session_state["messages"] in st.session_state:
+    if "messages" in st.session_state:
         del st.session_state["messages"]
 
 def clear_submit():
@@ -44,7 +44,8 @@ with st.expander("一些注意事项"):
     3. Map-Reduce方法，适用超长文档总结、大规模数据筛选。token消耗多，反应较快。
     4. Refine方法，适用需要深度理解、对结果质量要求极高的任务。token消耗多，反应慢。  
     5. Map-Rerank方法，适用答案隐藏于某一个特定段落的问答。token消耗较多，反应较快。  
-    6. 对AI看法的选择，将影响AI的性格""")
+    6. 对AI看法的选择，将细微影响AI的性格。  
+    7. 调用的模型 deepseek-v3 。  """)
 
 
 col1,col2,col3=st.columns([1.3,1,1])
