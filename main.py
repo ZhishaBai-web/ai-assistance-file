@@ -5,20 +5,23 @@ from map_reduce import mapreduce_response
 from map_rerank import maprerank_response
 import streamlit as st
 
+
 def clear_retriever():
     if "retriever" in st.session_state:
         del st.session_state["retriever"]
     if "submit" in st.session_state:
         st.session_state["submit"] = False
     if "messages" in st.session_state:
-        del st.session_state["messages"]
+        st.session_state["messages"] = []
 
 def clear_submit():
     if "submit" in st.session_state:
         st.session_state["submit"] = False
     if "messages" in st.session_state:
-        del st.session_state["messages"]
+        st.session_state["messages"] = []
 
+if "messages" not in st.session_state:
+    st.session_state["messages"] = []
 
 st.title("📕 AI智能问答工具")
 with st.sidebar:
@@ -87,7 +90,7 @@ if "retriever" not in st.session_state:
         st.session_state["retriever"] = document_retriever(upload_file,user_language,API,URL)
 
 
-if "messages" not in st.session_state:
+if st.session_state["messages"] == []:
     st.session_state["messages"]=[{"role":"ai",
                                   "content":"你好，我是AI助手"}]
 
